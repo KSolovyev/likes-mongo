@@ -1,0 +1,26 @@
+# Created by https://www.gitignore.io/api/java,maven,intellij
+
+### Maven ###
+target/
+
+### Intellij ###
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+.idea/*
+
+# Mongo Explorer plugin:
+.idea/mongoSettings.xml
+
+## File-based project format:
+*.iws
+
+# IntelliJ
+/out/
+
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
+
+# Package Files #
+*.jar
