@@ -107,7 +107,7 @@ public class LikesTest {
         likeService.like("5", "25");
         likeService.like("25", "5");
         Assert.assertEquals(0, likeService.getLikes("25"));
-        Assert.assertEquals(1, likeService.getLikes("5")); //like was passed from nonexistent user. That's ok until we do not allow users to pass ids directly to the business logic
+        Assert.assertEquals(1, likeService.getLikes("5")); //Лайк получен от несуществующего пользователя. Это нормально, пока мы нигде не получаем id напрямую от пользователя
     }
 
     //Для того чтобы быть уверенным что с многопоточностью все более-менее в порядке нужно прогнать тест пару тысяч раз
