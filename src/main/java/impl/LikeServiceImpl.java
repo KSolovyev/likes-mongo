@@ -1,6 +1,7 @@
 package impl;
 
 import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.Projections;
 import org.bson.Document;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +42,11 @@ public class LikeServiceImpl implements LikeService {
     public long getLikes(@NotNull String playerId) {
         final FindIterable<Document> userLikes = mongoService.getDb().getCollection(params.getUserCollectionName())
                 .find(eq("_id", playerId));
-        final Document user = userLikes.projection(Projections.include("likes")).iterator().next();
+        final MongoCursor<Document> iterator = userLikes.projection(Projections.include("likes")).iterator();
+        if(!iterator.hasNext()) {
+            return 0;
+        }
+        final Document user = iterator.next();
         return user.get("likes", ArrayList.class).size();
     }
 }

@@ -97,6 +97,19 @@ public class LikesTest {
         Assert.assertEquals(0, likeService.getLikes("2"));
     }
 
+    @Test
+    public void noUserTest() {
+        Assert.assertEquals(0, likeService.getLikes("20"));
+    }
+
+    @Test
+    public void wrongUserTest() {
+        likeService.like("5", "25");
+        likeService.like("25", "5");
+        Assert.assertEquals(0, likeService.getLikes("25"));
+        Assert.assertEquals(1, likeService.getLikes("5")); //like was passed from nonexistent user. That's ok until we do not allow users to pass ids directly to the business logic
+    }
+
     //Для того чтобы быть уверенным что с многопоточностью все более-менее в порядке нужно прогнать тест пару тысяч раз
     @Test
     @Repeat(1)
