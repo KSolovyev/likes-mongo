@@ -30,7 +30,7 @@ public class ParamsImpl implements Params{
         checkNotNull(properties.getProperty(mongoParamsPrefix + HOST), "Can't find " + mongoParamsPrefix + HOST +" param ");
         final String port = properties.getProperty(mongoParamsPrefix + PORT);
         checkNotNull(port, "Can't find " + mongoParamsPrefix + PORT +" param ");
-        checkInt(port, "Port should be integer. Port specified: " + port);
+        checkInt(port, "Port should be integer. Port have been specified: " + port);
     }
 
 
